@@ -1,0 +1,41 @@
+{{- $queueUrl := .Values.exabotK8s.env.queueUrl | required ".Values.exabotK8s.env.queueUrl is required." -}}
+{{- $configBucketId := .Values.exabotK8s.env.configBucketId | required ".Values.exabotK8s.env.configBucketId is required." -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}
+  labels:
+    app.kubernetes.io/name: {{ .Chart.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+  strategy:
+    type: Recreate
+  revisionHistoryLimit: 3
+  template:
+    metadata:
+      annotations:
+        #this will cause pod update when you update values in the configmap
+        checksum/sa: {{ include (print .Template.BasePath "/serviceaccount.yaml") . | sha256sum }}
+        checksum/rbac: {{ include (print .Template.BasePath "/rbac.yaml") . | sha256sum }}
+      labels:
+        app: {{ .Chart.Name }}
+    spec:
+      serviceAccountName: {{ .Chart.Name }}
+      containers:
+      - name: exabot-k8s
+        image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        resources:
+          requests:
+            cpu: {{ .Values.exabotK8s.cpu.request | quote }}
+            memory: {{ .Values.exabotK8s.memory.request | quote }}
+          limits:
+            memory: {{ .Values.exabotK8s.memory.limit | quote }}
+        env:
+        - name: EXAFORCE_SQS_URL
+          value: {{ $queueUrl | quote }}
+        - name: EXAFORCE_CONFIG_BUCKET
+          value: {{ $configBucketId | quote }}
