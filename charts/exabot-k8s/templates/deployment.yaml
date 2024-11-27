@@ -12,7 +12,7 @@ spec:
     matchLabels:
       app: {{ .Chart.Name }}
   strategy:
-    type: Recreate
+    type: RollingUpdate
   revisionHistoryLimit: 3
   template:
     metadata:
@@ -49,3 +49,7 @@ spec:
           value: {{ $queueUrl | quote }}
         - name: EXAFORCE_CONFIG_BUCKET
           value: {{ $configBucketId | quote }}
+        - name: EXABOT_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
