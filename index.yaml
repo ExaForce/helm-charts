@@ -3,6 +3,16 @@ entries:
   exabot-k8s:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2024-12-04T15:30:37.227876024Z"
+    description: A Helm chart for exaforce exabot-k8s
+    digest: ffea894ab22fe6cef379ba55c7ae5c96a9950c2f3d45376fa65a4768b875351a
+    name: exabot-k8s
+    type: application
+    urls:
+    - https://github.com/ExaForce/helm-charts/releases/download/exabot-k8s-0.0.4/exabot-k8s-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2024-07-11T07:10:37.150143728Z"
     description: A Helm chart for exaforce exabot-k8s
     digest: 8d84848758358d1c05283b84a4e161ec7772ff483d44639b7af9c06ab85842e2
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/ExaForce/helm-charts/releases/download/exabot-k8s-0.0.3/exabot-k8s-0.0.3.tgz
     version: 0.0.3
-generated: "2024-07-11T07:10:37.150167803Z"
+generated: "2024-12-04T15:30:37.227886414Z"
