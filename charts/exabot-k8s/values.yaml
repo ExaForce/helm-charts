@@ -18,6 +18,11 @@ exabotK8s:
   serviceAccount:
     # exabotK8s.serviceAccount.roleArn -- The ARN of the role that the service account will assume to access AWS resources
     roleArn: ""
+  supportedArchitecture:
+    # exabotK8s.supportedArchitecture.amd64 -- If true, the deployment will be scheduled on amd64 nodes
+    amd64: true
+    # exabotK8s.supportedArchitecture.arm64 -- If true, the deployment will be scheduled on arm64 nodes
+    arm64: false
   memory:
     limit: "200Mi"
     request: "100Mi"
