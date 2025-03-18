@@ -4,6 +4,38 @@
 
 A Helm chart for exaforce exabot-k8s
 
+## Prerequisites
+
+- Kubernetes 1.19+
+- Helm 3.7+
+
+## Get Repository Info
+
+```console
+helm repo add exaforce https://exaforce.github.io/helm-charts
+helm repo update
+```
+
+_See [helm repository](https://helm.sh/docs/helm/helm_repo/) for command documentation._
+
+## Install Chart
+
+```console
+helm install [NAME] exaforce/exabot-k8s
+```
+
+_See [values](#values) below._
+
+_See [helm install](https://helm.sh/docs/helm/helm_install/) for command documentation._
+
+## Uninstall Chart
+
+```console
+helm uninstall [NAME]
+```
+
+_See [helm uninstall](https://helm.sh/docs/helm/helm_uninstall/) for command documentation._
+
 ## Values
 
 | Key | Type | Default | Description |
