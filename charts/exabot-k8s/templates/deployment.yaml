@@ -28,12 +28,11 @@ spec:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
-              - matchExpressions:
-                  - key: beta.kubernetes.io/arch
-                    operator: In
-                    values:
-                      {{ if .Values.exabotK8s.supportedArchitecture.arm64 }}- arm64{{- end }}
-                      {{ if .Values.exabotK8s.supportedArchitecture.amd64 }}- amd64{{- end }}
+            - matchExpressions:
+              - key: beta.kubernetes.io/arch
+                operator: In
+                values:
+                {{- toYaml .Values.exabotK8s.supportedArchitectures | nindent 16 }}
       containers:
       - name: exabot-k8s
         image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
