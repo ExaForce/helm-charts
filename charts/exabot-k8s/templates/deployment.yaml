@@ -24,15 +24,6 @@ spec:
         app: {{ .Chart.Name }}
     spec:
       serviceAccountName: {{ .Chart.Name }}
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: beta.kubernetes.io/arch
-                operator: In
-                values:
-                {{- toYaml .Values.exabotK8s.supportedArchitectures | nindent 16 }}
       containers:
       - name: exabot-k8s
         image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
@@ -62,3 +53,15 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.name
+      {{- with .Values.exabotK8s.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.exabotK8s.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.exabotK8s.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

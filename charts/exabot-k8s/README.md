@@ -40,13 +40,15 @@ _See [helm uninstall](https://helm.sh/docs/helm/helm_uninstall/) for command doc
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| exabotK8s.affinity | object | `{}` | Affinity rules for scheduling the pod. |
 | exabotK8s.cpu.request | string | `"10m"` |  |
 | exabotK8s.env.configBucketId | string | `""` | The S3 bucket where exabot will read it's configuration |
 | exabotK8s.env.queueUrl | string | `""` | The SQS URL exabot will publis messages to |
 | exabotK8s.memory.limit | string | `"200Mi"` |  |
 | exabotK8s.memory.request | string | `"100Mi"` |  |
+| exabotK8s.nodeSelector | object | `{"kubernetes.io/os":"linux"}` | Node selectors to schedule the pod to nodes with labels. |
 | exabotK8s.serviceAccount.roleArn | string | `""` | The ARN of the role that the service account will assume to access AWS resources |
-| exabotK8s.supportedArchitectures | list | `["amd64"]` | List of architectures which will be required during scheduling |
+| exabotK8s.tolerations | object | `{}` | Tolerations to allow the pod to be scheduled to nodes with taints. |
 | image.name | string | `"exabot-k8s"` |  |
 | image.pullPolicy | string | `"Always"` |  |
 | image.repository | string | `"public.ecr.aws/k5x9t2h7"` |  |

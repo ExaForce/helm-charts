@@ -18,9 +18,13 @@ exabotK8s:
   serviceAccount:
     # exabotK8s.serviceAccount.roleArn -- The ARN of the role that the service account will assume to access AWS resources
     roleArn: ""
-  # exabotK8s.supportedArchitectures -- List of architectures which will be required during scheduling
-  supportedArchitectures:
-    - amd64
+  # exabotK8s.nodeSelector -- Node selectors to schedule the pod to nodes with labels.
+  nodeSelector:
+    kubernetes.io/os: linux
+  # exabotK8s.affinity -- Affinity rules for scheduling the pod.
+  affinity: {}
+  # exabotK8s.tolerations -- Tolerations to allow the pod to be scheduled to nodes with taints.
+  tolerations: {}
   memory:
     limit: "200Mi"
     request: "100Mi"
