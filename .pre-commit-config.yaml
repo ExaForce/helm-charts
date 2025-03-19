@@ -4,37 +4,37 @@
 
 # configure shared hooks that you want to run on all repositories here
 repos:
-- repo: https://github.com/norwoodj/helm-docs
-  rev:  "v1.13.1"
-  hooks:
-    - id: helm-docs
-      args:
-        # Make the tool search for charts only under the `charts` directory
-        - --chart-search-root=charts
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.5.0
-  hooks:
-  - id: check-yaml
-    args: [--allow-multiple-documents]
-    exclude: |
-      (?x)^(
-        charts/
-      )
-  - id: check-merge-conflict
-  - exclude: README.md
-    id: end-of-file-fixer
-  - exclude: README.md
-    id: trailing-whitespace
-  - id: mixed-line-ending
-  - id: check-added-large-files
-- repo: https://github.com/python-jsonschema/check-jsonschema
-  rev: 0.27.3
-  hooks:
-  - id: check-github-workflows
-  - id: check-github-actions
+  - repo: https://github.com/norwoodj/helm-docs
+    rev: "v1.14.2"
+    hooks:
+      - id: helm-docs
+        args:
+          # Make the tool search for charts only under the `charts` directory
+          - --chart-search-root=charts
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-yaml
+        args: [--allow-multiple-documents]
+        exclude: |
+          (?x)^(
+            charts/
+          )
+      - id: check-merge-conflict
+      - exclude: README.md
+        id: end-of-file-fixer
+      - exclude: README.md
+        id: trailing-whitespace
+      - id: mixed-line-ending
+      - id: check-added-large-files
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.31.3
+    hooks:
+      - id: check-github-workflows
+      - id: check-github-actions
 
-# For hooks that only apply to specific repositories, list them below
-- repo: https://github.com/gruntwork-io/pre-commit
-  rev: v0.1.23 # Get the latest from: https://github.com/gruntwork-io/pre-commit/releases
-  hooks:
-    - id: helmlint
+  # For hooks that only apply to specific repositories, list them below
+  - repo: https://github.com/gruntwork-io/pre-commit
+    rev: v0.1.26 # Get the latest from: https://github.com/gruntwork-io/pre-commit/releases
+    hooks:
+      - id: helmlint
