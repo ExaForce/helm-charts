@@ -7,7 +7,7 @@ image:
   name: exabot-k8s
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.0.1"
+  tag: "0.0.3"
 
 exabotK8s:
   env:

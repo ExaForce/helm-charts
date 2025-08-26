@@ -1,40 +1,8 @@
 # exabot-k8s
 
-![Version: 0.0.5](https://img.shields.io/badge/Version-0.0.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.0.6](https://img.shields.io/badge/Version-0.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.3](https://img.shields.io/badge/AppVersion-0.0.3-informational?style=flat-square)
 
 A Helm chart for exaforce exabot-k8s
-
-## Prerequisites
-
-- Kubernetes 1.19+
-- Helm 3.7+
-
-## Get Repository Info
-
-```console
-helm repo add exaforce https://exaforce.github.io/helm-charts
-helm repo update
-```
-
-_See [helm repository](https://helm.sh/docs/helm/helm_repo/) for command documentation._
-
-## Install Chart
-
-```console
-helm install [NAME] exaforce/exabot-k8s
-```
-
-_See [values](#values) below._
-
-_See [helm install](https://helm.sh/docs/helm/helm_install/) for command documentation._
-
-## Uninstall Chart
-
-```console
-helm uninstall [NAME]
-```
-
-_See [helm uninstall](https://helm.sh/docs/helm/helm_uninstall/) for command documentation._
 
 ## Values
 
@@ -52,7 +20,7 @@ _See [helm uninstall](https://helm.sh/docs/helm/helm_uninstall/) for command doc
 | image.name | string | `"exabot-k8s"` |  |
 | image.pullPolicy | string | `"Always"` |  |
 | image.repository | string | `"public.ecr.aws/k5x9t2h7"` |  |
-| image.tag | string | `"0.0.1"` |  |
+| image.tag | string | `"0.0.3"` |  |
 | rbac.enabled | bool | `true` |  |
 
 ----------------------------------------------
