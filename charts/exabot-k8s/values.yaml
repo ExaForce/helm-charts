@@ -26,9 +26,9 @@ exabotK8s:
   # exabotK8s.tolerations -- Tolerations to allow the pod to be scheduled to nodes with taints.
   tolerations: {}
   memory:
-    limit: "200Mi"
-    request: "100Mi"
+    limit: "500Mi"
+    request: "250Mi"
   cpu:
-    request: "10m"
+    request: "50m"
 rbac:
   enabled: true
